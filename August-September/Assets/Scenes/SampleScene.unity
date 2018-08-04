@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 464227227}
   - component: {fileID: 464227226}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Jam Cow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 956476547}
   - component: {fileID: 956476546}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Jam Jar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
