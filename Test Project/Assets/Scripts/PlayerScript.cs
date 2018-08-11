@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
     public float jumpPower = 10.0f;
-    public float movementSpeed = 10.0f;
+    public float movementSpeed = 1.0f;
     Rigidbody2D myRigidbody;
     public bool isGrounded = false;
 	// Use this for initialization
@@ -17,12 +17,12 @@ public class PlayerScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale * 20.0f));
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        } else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            myRigidbody.AddForce(Vector2.left * (movementSpeed * 20.0f));
-        }else if (Input.GetKeyDown(KeyCode.RightArrow))
+            myRigidbody.AddForce(Vector2.left * (movementSpeed*20));
+        }else if (Input.GetKey(KeyCode.RightArrow))
         {
-            myRigidbody.AddForce(Vector2.right * movementSpeed *20.0f);
+            myRigidbody.AddForce(Vector2.right * movementSpeed *20 );
         }
     }
 
