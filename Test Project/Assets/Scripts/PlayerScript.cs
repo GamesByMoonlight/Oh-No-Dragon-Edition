@@ -19,10 +19,10 @@ public class PlayerScript : MonoBehaviour {
             myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale * 20.0f));
         } else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            myRigidbody.AddForce(Vector2.left * (movementSpeed*20));
+            myRigidbody.AddForce(Vector2.left * (movementSpeed*2.5f));
         }else if (Input.GetKey(KeyCode.RightArrow))
         {
-            myRigidbody.AddForce(Vector2.right * movementSpeed *20 );
+            myRigidbody.AddForce(Vector2.right * movementSpeed *2.5f );
         }
     }
 
