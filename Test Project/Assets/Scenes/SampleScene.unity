@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 5
   challenges:
-  - {fileID: 1113469039695230, guid: 6b08a6d2f6439c145b3fd107a1782fb0, type: 2}
+  - {fileID: 0}
   frequency: 0.5
   challengesSpawnPoint: {fileID: 1323468527}
 --- !u!4 &1225265141
@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 1858994903}
   - component: {fileID: 1858994906}
   - component: {fileID: 1858994905}
+  - component: {fileID: 1858994908}
   - component: {fileID: 1858994907}
   m_Layer: 0
   m_Name: player
@@ -635,7 +636,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1858994906
 BoxCollider2D:
@@ -670,9 +671,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1858994902}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9977d2b35a529834c827ab2d411e9b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 50
+  startDashTime: 0.1
+--- !u!114 &1858994908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858994902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a911c726248ad547bdd126f937efdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 10
-  movementSpeed: 20
+  movementSpeed: 1
   isGrounded: 0
