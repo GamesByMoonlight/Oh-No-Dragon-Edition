@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: a8c10c872d2fbca4ba58f40a7949f3fb
+guid: 070d0f87236204b4f9caa90b60afc261
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dragondig_0
-    21300002: dragondig_1
-    21300004: dragondig_2
+    21300000: dragonfly_0
+    21300002: dragonfly_1
+    21300004: dragonfly_2
+    21300006: dragonfly_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -131,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dragondig_0
+      name: dragonfly_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 3
-        width: 155
-        height: 109
+        y: 46
+        width: 161
+        height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,19 +146,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef3a9b6caa5a7be429909779841f4050
+      spriteID: e46cc366d60d74f4ba0cc850be8409dc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragondig_1
+      name: dragonfly_1
       rect:
         serializedVersion: 2
-        x: 229
+        x: 202
+        y: 47
+        width: 167
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e6ba753f9ac0e4d811ec70ea0b0067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragonfly_2
+      rect:
+        serializedVersion: 2
+        x: 398
         y: 0
-        width: 159
-        height: 119
+        width: 161
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,19 +186,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88531dfaf0241b94cbd552446229400a
+      spriteID: d26a866a921e7364eba247c1a0dbc0d3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragondig_2
+      name: dragonfly_3
       rect:
         serializedVersion: 2
-        x: 427
-        y: 15
-        width: 169
-        height: 108
+        x: 619
+        y: 47
+        width: 158
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,7 +206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f689ff9ed2c40a44ab31dd8a76f9dc43
+      spriteID: 9746ce696a728774996e9ad9fa737870
       vertices: []
       indices: 
       edges: []
@@ -193,7 +214,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 93c672ff088045f4c92267619dd20f96
+    spriteID: 42885fcf39d27e248be429fc7cdae702
     vertices: []
     indices: 
     edges: []

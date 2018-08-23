@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 790729020c3f71f47bf1e62f950a3917
+guid: b94bbe58dfd8b0941ad45a2273853ec6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dragonfire_0
-    21300002: dragonfire_1
-    21300004: dragonfire_2
-    21300006: dragonfire_3
-    21300008: dragonfire_4
+    21300000: dragondig_0
+    21300002: dragondig_1
+    21300004: dragondig_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -133,13 +131,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dragonfire_0
+      name: dragondig_0
       rect:
         serializedVersion: 2
         x: 0
+        y: 3
+        width: 155
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a13fe0e37ebf284591f6c456ca85627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragondig_1
+      rect:
+        serializedVersion: 2
+        x: 229
         y: 0
-        width: 134
-        height: 163
+        width: 159
+        height: 119
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,19 +165,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af859184153e27643b24aaa0105641e6
+      spriteID: d9583545a9fb93142b4a2420b962123a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonfire_1
+      name: dragondig_2
       rect:
         serializedVersion: 2
-        x: 193
-        y: 0
-        width: 129
-        height: 166
+        x: 427
+        y: 15
+        width: 169
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,67 +185,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1839b52ec4cbaaf43bdeb50a9b3dfdca
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonfire_2
-      rect:
-        serializedVersion: 2
-        x: 362
-        y: 4
-        width: 177
-        height: 153
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 305f636419862ea4d9008d43b53f0778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonfire_3
-      rect:
-        serializedVersion: 2
-        x: 555
-        y: 4
-        width: 177
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf5abddb11899ca4f9f1220432d91538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonfire_4
-      rect:
-        serializedVersion: 2
-        x: 758
-        y: 4
-        width: 189
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd6d201bdfdc9594fa92d19f6e6fec0b
+      spriteID: eb68d5a6e0ff32f42b5b3c79fe783258
       vertices: []
       indices: 
       edges: []
@@ -235,7 +193,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6bd71ea523f34214da8550c53d1cf5c9
+    spriteID: 499b1d71d1385574eb2a558f42a2705c
     vertices: []
     indices: 
     edges: []

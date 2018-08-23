@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: f7f1435e797a7cb44bedea551e8b3d2f
+guid: 450b8fa94fb50e140afa226a743eb084
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dragonkick_0
-    21300002: dragonkick_1
-    21300004: dragonkick_2
-    21300006: dragonkick_3
-    21300008: dragonkick_4
+    21300000: dragonfire_0
+    21300002: dragonfire_1
+    21300004: dragonfire_2
+    21300006: dragonfire_3
+    21300008: dragonfire_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -133,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dragonkick_0
+      name: dragonfire_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 151
-        height: 134
+        width: 134
+        height: 163
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,39 +147,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27bb74cc944eafc41938e1e35e5d88c0
+      spriteID: 48c4c4d22f1305742a308b877cebad4b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonkick_1
+      name: dragonfire_1
       rect:
         serializedVersion: 2
-        x: 177
-        y: 1
-        width: 160
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e9aa4397e58f3b646b791d1020efd5a2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonkick_2
-      rect:
-        serializedVersion: 2
-        x: 388
+        x: 193
         y: 0
-        width: 158
-        height: 132
+        width: 129
+        height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,19 +167,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a8b07612c3ca044d830dc3f5bfaf173
+      spriteID: f305df98f63389145ba2c3af9fc03c70
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonkick_3
+      name: dragonfire_2
       rect:
         serializedVersion: 2
-        x: 589
-        y: 0
-        width: 164
-        height: 131
+        x: 362
+        y: 4
+        width: 177
+        height: 153
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,19 +187,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffabc02b55ce7cc419ef1cde0677e29b
+      spriteID: 25dfb145a7421484783f728f759a90bb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonkick_4
+      name: dragonfire_3
       rect:
         serializedVersion: 2
-        x: 772
-        y: 0
-        width: 176
-        height: 134
+        x: 555
+        y: 4
+        width: 177
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,7 +207,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62b3cec153c469b428c014a40bdaf10f
+      spriteID: c1341dca4aba1184aade0af62477ec66
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragonfire_4
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 4
+        width: 189
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad75e7654e101874b9ced69bc02ef925
       vertices: []
       indices: 
       edges: []
@@ -235,7 +235,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9bea668743dd35c43ae9bdf2b5952906
+    spriteID: 906a8567f0c5c69498ba50d8ce4adae0
     vertices: []
     indices: 
     edges: []
