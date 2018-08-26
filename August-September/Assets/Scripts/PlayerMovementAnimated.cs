@@ -5,7 +5,11 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMovementAnimated : MonoBehaviour {
 
+    [SerializeField]
+    public AudioSource audioS;
+
     public float baseSpeed;
+    public float animBaseSpeed;
     private Rigidbody2D playerRigidBody;
 
 
@@ -40,6 +44,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     void Update()
     {
         GetPlayerInput();
+        PlayFootSteps();
 
         movement = new Vector2(movePlayerHorizontal, movePlayerVertical);
 
@@ -109,6 +114,19 @@ public class PlayerMovementAnimated : MonoBehaviour {
             anim.SetBool("isFlying", false);
             anim.SetBool("isDigging", false);
             anim.SetBool("isFiring", false);
+        }
+    }
+    private void PlayFootSteps()
+    {
+        if(movePlayerHorizontal > 0.1f || animBaseSpeed > 0.1f)
+        {
+            audioS.enabled = true;
+            audioS.loop = true;
+        }
+        if(movePlayerHorizontal < 0.1f && movePlayerVertical < 0.1f)
+        {
+            audioS.enabled = false;
+            audioS.loop = false;
         }
     }
 
