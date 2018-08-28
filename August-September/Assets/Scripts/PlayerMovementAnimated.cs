@@ -35,7 +35,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     void Awake()
     {
         //defines animator
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
     }
