@@ -5,9 +5,11 @@ using UnityEngine;
 public class DragonType : MonoBehaviour
 {
     public enum eDragonType { AirDragon, WaterDragon, FireDragon, EarthDragon };
+    public GameObject poof;
 
     private SpriteRenderer spriteRenderer;
     private Animator anim;
+    private bool switchAvailable = true;
 
     private eDragonType _DragonType;
 
@@ -26,34 +28,43 @@ public class DragonType : MonoBehaviour
 
      void Update()
     {
-        
-        if (Input.GetButtonDown("SwitchToAirDragon"))
+        if (switchAvailable)
         {
-            DragonTypeV = eDragonType.AirDragon;
-            ChangeDragonColor();
-        }
-        if (Input.GetButtonDown("SwitchToWaterDragon"))
-        {
-            DragonTypeV = eDragonType.WaterDragon;
-            ChangeDragonColor();
-        }
+            
+            if (Input.GetButtonDown("SwitchToAirDragon") && DragonTypeV != eDragonType.AirDragon)
+            {
+                DragonTypeV = eDragonType.AirDragon;
+                ChangeDragonColor();
+                PauseSwitching();
+            }
+            if (Input.GetButtonDown("SwitchToWaterDragon") && DragonTypeV != eDragonType.WaterDragon)
+            {
+                DragonTypeV = eDragonType.WaterDragon;
+                ChangeDragonColor();
+                PauseSwitching();
+            }
 
-        if (Input.GetButtonDown("SwitchToFireDragon"))
-        {
-            DragonTypeV = eDragonType.FireDragon;
-            ChangeDragonColor();
-        }
+            if (Input.GetButtonDown("SwitchToFireDragon") && DragonTypeV != eDragonType.FireDragon)
+            {
+                
+                DragonTypeV = eDragonType.FireDragon;
+                ChangeDragonColor();
+                PauseSwitching();
 
-        if (Input.GetButtonDown("SwitchToEarthDragon"))
-        {
-            DragonTypeV = eDragonType.EarthDragon;
-            ChangeDragonColor();
-        }
+            }
 
+            if (Input.GetButtonDown("SwitchToEarthDragon") && DragonTypeV != eDragonType.EarthDragon)
+            {
+                DragonTypeV = eDragonType.EarthDragon;
+                ChangeDragonColor();
+                PauseSwitching();
+            }
+        }
     }
 
     private void ChangeDragonColor()
     {
+
         switch (DragonTypeV)
         {
             case eDragonType.AirDragon:
@@ -69,11 +80,14 @@ public class DragonType : MonoBehaviour
                 spriteRenderer.color = Color.blue;
                 break;
         }
+
+        MakePuff();
+        
     }
 
     public void PlayAnimation()
     {
-        Debug.Log("PlayAnimation");
+        
         switch (DragonTypeV)
         {
             case eDragonType.AirDragon:
@@ -87,6 +101,32 @@ public class DragonType : MonoBehaviour
                 anim.SetTrigger("Fire");
                 break;
         }
+
+        
+    }
+
+    private void PauseSwitching()
+    {
+        switchAvailable = false;
+        Invoke("SwitchingOk", 0.8f);
+    }
+
+    private void MakePuff()
+    {
+        GameObject puff = Instantiate(poof, transform.position, Quaternion.identity);
+        ParticleSystem particles = puff.GetComponent<ParticleSystem>();
+
+        var color = particles.colorOverLifetime;
+
+        Gradient particleColorGradient = new Gradient();
+        particleColorGradient.SetKeys(new GradientColorKey[] { new GradientColorKey(spriteRenderer.color, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0f, 1.5f) });
+
+        color.color = particleColorGradient;
+    }
+
+    private void SwitchingOk()
+    {
+        switchAvailable = true;
     }
     //DragonType.eDragonType d;
 
