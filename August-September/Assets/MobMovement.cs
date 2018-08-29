@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class MobMovement : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    public float mobSpeed = 10;
+    public UICounter counter;
+
 	// Update is called once per frame
 	void Update () {
-		
+        Vector2 newPosition = transform.position;
+
+        newPosition.x += mobSpeed * Time.deltaTime;
+
+        transform.position = newPosition;
 	}
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            counter.Finish();
+        }
+    }
 }

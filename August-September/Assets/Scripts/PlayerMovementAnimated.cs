@@ -160,9 +160,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y+1, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
+                    Vector3 regTile = new Vector3(-1, -1, 0);
 
-                    Debug.Log("Hit tile with name " + tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
 
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
@@ -179,7 +178,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
+                    Vector3 regTile = new Vector3(-1, -1, 0);
  
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
@@ -198,7 +197,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y -1, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
+                    Vector3 regTile = new Vector3(-1, -1, 0);
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
@@ -213,7 +212,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
+                    Vector3 regTile = new Vector3(-1, -1, 0);
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
@@ -229,7 +228,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             {
                 //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y - 1, 0);
-                Vector3 regTile = new Vector3(-2, -4, 0);
+                Vector3 regTile = new Vector3(-1, -1, 0);
                 if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
@@ -245,7 +244,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             {
                 //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y+1, 0);
-                Vector3 regTile = new Vector3(-2, -4, 0);
+                Vector3 regTile = new Vector3(-1, -1, 0);
                 if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
@@ -269,6 +268,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
         switch (d)
         {
+            
             case  DragonType.eDragonType.EarthDragon:
                 {
                     if(crashingTile.name == "rockTile")
@@ -287,7 +287,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 }
             case DragonType.eDragonType.WaterDragon:
                 {
-                    if (crashingTile.name == "waterTile")
+                    if (crashingTile.name == "TilesetExample_13") // This is a water tile, dunno how to rename it
                     {
                         return true;
                     }
