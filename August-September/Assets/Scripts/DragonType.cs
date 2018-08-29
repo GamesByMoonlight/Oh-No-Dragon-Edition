@@ -15,6 +15,31 @@ public class DragonType : MonoBehaviour
         set { _DragonType = value; }
     }
 
+     void Update()
+    {
+        
+        if (Input.GetButtonDown("SwitchToAirDragon"))
+        {
+            DragonTypeV = eDragonType.AirDragon;
+        }
+        if (Input.GetButtonDown("SwitchToWaterDragon"))
+        {
+            DragonTypeV = eDragonType.WaterDragon;
+        }
+
+        if (Input.GetButtonDown("SwitchToFireDragon"))
+        {
+            DragonTypeV = eDragonType.FireDragon;
+        }
+
+        if (Input.GetButtonDown("SwitchToEarthDragon"))
+        {
+            DragonTypeV = eDragonType.EarthDragon;
+        }
+
+    }
+
+
     //DragonType.eDragonType d;
 
     //d = DragonType.eDragonType.AirDragon;
@@ -24,7 +49,7 @@ public class DragonType : MonoBehaviour
     //        case DragonType.eDragonType.AirDragon:
     //        {
     //                break;
-                   
+
     //        }
     //    }
 }
