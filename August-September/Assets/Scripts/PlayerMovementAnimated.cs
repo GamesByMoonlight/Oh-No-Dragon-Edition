@@ -51,8 +51,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     void Update()
     {
         GetPlayerInput();
-        PlayFootSteps();
-
+        
         movement = new Vector2(movePlayerHorizontal, movePlayerVertical);
 
         // Move Character
@@ -127,7 +126,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
         }
     }
     */
-    private void PlayFootSteps()
+    /*private void PlayFootSteps()
     {
         if(movePlayerHorizontal > 0.1f || animBaseSpeed > 0.1f)
         {
@@ -140,6 +139,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             audioS.loop = false;
         }
     }
+    */
 
     // Update is called once per frame
     //     void Update () {

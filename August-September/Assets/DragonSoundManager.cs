@@ -16,11 +16,13 @@ public class DragonSoundManager : MonoBehaviour {
         dragonType = GetComponentInParent<DragonType>();
         thisDragon = dragonType.DragonTypeV;
         audioSource = GetComponent<AudioSource>();
-        stepSource = GetComponentInParent<AudioSource>();
+        stepSource = transform.parent.GetComponent<AudioSource>();
 	}
 
     void PlaySFX()
     {
+        audioSource.Stop();
+        thisDragon = dragonType.DragonTypeV;
         switch (thisDragon)
         {
             case DragonType.eDragonType.AirDragon:
@@ -44,10 +46,9 @@ public class DragonSoundManager : MonoBehaviour {
 
     public void PlayStep()
     {
-        if(stepSource.isPlaying == false)
-        {
-            stepSource.Play();
-        }
+        stepSource.pitch = Random.Range(0.7f, 1.2f);
+        stepSource.Play();
+        
         
     }
 }

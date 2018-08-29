@@ -108,7 +108,7 @@ public class DragonType : MonoBehaviour
     private void PauseSwitching()
     {
         switchAvailable = false;
-        Invoke("SwitchingOk", 0.8f);
+        Invoke("SwitchingOk", 0.65f);
     }
 
     private void MakePuff()
