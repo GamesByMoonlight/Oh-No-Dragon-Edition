@@ -13,7 +13,7 @@ public class TileEcho : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Test");
+        //Debug.Log("Test");
 
     }
 
@@ -21,6 +21,6 @@ public class TileEcho : MonoBehaviour {
     {
         m_ObjectCollider = GetComponent<Collider>();
         m_ObjectCollider.isTrigger = false;
-        //Debug.Log("Trigger On : " + m_ObjectCollider.isTrigger);
+        ////Debug.Log("Trigger On : " + m_ObjectCollider.isTrigger);
     }
 }

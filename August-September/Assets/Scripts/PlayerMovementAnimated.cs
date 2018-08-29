@@ -30,8 +30,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
     {
         movePlayerHorizontal = Input.GetAxis("Horizontal");
         movePlayerVertical = Input.GetAxis("Vertical");
-        Debug.Log("Horizontal :"+movePlayerHorizontal);
-        Debug.Log("Horizontal :" + movePlayerVertical);
+        //Debug.Log("Horizontal :"+movePlayerHorizontal);
+        //Debug.Log("Horizontal :" + movePlayerVertical);
 
     }
 
@@ -58,8 +58,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
         //returns value to animator. when animBaseSpeed is greater than 0.25 animation changes from idle to walking
         anim.SetFloat ("animBaseSpeed", Mathf.Abs (movePlayerHorizontal));
-        Debug.Log(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position));
-        //Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position)));
+        //Debug.Log(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position));
+        ////Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position)));
         // tm.SetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position), tm.GetTile(new Vector3Int(-2,-3,0)));
 
         /*
@@ -149,21 +149,22 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Made contact with a tile");
+        //Debug.Log("Made contact with a tile");
       
         if (movePlayerHorizontal>0 && (movePlayerHorizontal > Mathf.Abs(movePlayerVertical) || movePlayerHorizontal == movePlayerVertical))
         {
             if(movePlayerHorizontal == movePlayerVertical)
             {
-                Debug.Log("Moving in the positive x direction");
+                //Debug.Log("Moving in the positive x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y+1, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
 
+                    Debug.Log("Hit tile with name " + tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
 
-                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
@@ -173,14 +174,14 @@ public class PlayerMovementAnimated : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Moving in the positive x direction");
+                //Debug.Log("Moving in the positive x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
  
-                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
@@ -192,13 +193,13 @@ public class PlayerMovementAnimated : MonoBehaviour {
         {
             if (movePlayerHorizontal == movePlayerVertical)
             {
-                Debug.Log("Moving in the negative x direction");
+                //Debug.Log("Moving in the negative x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y -1, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
-                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
@@ -207,13 +208,13 @@ public class PlayerMovementAnimated : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Moving in the negative x direction");
+                //Debug.Log("Moving in the negative x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
-                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
@@ -223,13 +224,13 @@ public class PlayerMovementAnimated : MonoBehaviour {
             return;
         }else if (movePlayerVertical < 0 && movePlayerVertical < Mathf.Abs(movePlayerHorizontal))
         {
-            Debug.Log("Moving in the negative y direction");
+            //Debug.Log("Moving in the negative y direction");
             foreach (ContactPoint2D Smash in collision.contacts)
             {
-                Debug.Log("In loop");
+                //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y - 1, 0);
                 Vector3 regTile = new Vector3(-2, -4, 0);
-                if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
@@ -239,13 +240,13 @@ public class PlayerMovementAnimated : MonoBehaviour {
         }
         if (movePlayerVertical > 0 && movePlayerVertical > Mathf.Abs(movePlayerHorizontal))
         {
-            Debug.Log("Moving in the positive y direction");
+            //Debug.Log("Moving in the positive y direction");
             foreach (ContactPoint2D Smash in collision.contacts)
             {
-                Debug.Log("In loop");
+                //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y+1, 0);
                 Vector3 regTile = new Vector3(-2, -4, 0);
-                if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
@@ -255,8 +256,13 @@ public class PlayerMovementAnimated : MonoBehaviour {
         }
 
     }
-    private bool dragonValidator(TileBase crashingTile)
+    private bool DragonValidator(TileBase crashingTile)
     {
+        if (crashingTile == null)
+        {
+            return false;
+        }
+
         DragonType.eDragonType d;
 
         d = dragonType.DragonTypeV;

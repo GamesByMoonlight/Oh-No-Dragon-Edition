@@ -5,7 +5,7 @@ using UnityEngine;
 public class Depth : MonoBehaviour {
     SpriteRenderer tempRend;
     // 
-    float timer = 3;
+    //float timer = 3;
 
     private void Awake()
     {

@@ -28,7 +28,7 @@ public class Penguin : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(TileImage);
+        //Debug.Log(TileImage);
         penguinLocation.x = (int)rb.transform.position.x;
         penguinLocation.y = (int)rb.transform.position.y;
         penguinLocation.z = (int)rb.transform.position.z;
@@ -46,16 +46,16 @@ public class Penguin : MonoBehaviour {
             rb.AddForce(Vector2.down * (movementSpeed * 2.5f));
             //Vector3Int[] things = new Vector3Int[50];
             //TileBase[] morethings = new TileBase[50];
-          //  Debug.Log(tm.GetType().ToString());
-          // Debug.Log(rb.transform.position.ToString());
-            Debug.Log(tm.layoutGrid.WorldToCell(rb.transform.position));
-            Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(rb.transform.position)));
+          //  //Debug.Log(tm.GetType().ToString());
+          // //Debug.Log(rb.transform.position.ToString());
+            //Debug.Log(tm.layoutGrid.WorldToCell(rb.transform.position));
+            //Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(rb.transform.position)));
             //tm.SetTile(tm.layoutGrid.WorldToCell(rb.transform.position),tm.GetTile(new Vector3Int(-5,-1,0)));
             tm.SetTile(tm.layoutGrid.WorldToCell(new Vector3Int (0,0,0)), tm.GetTile(new Vector3Int(-45, -2, 0)));
             //-45,2,0 = darkness
-            BoundsInt bounds = new BoundsInt(10, 10, 10, 10, 10, 10);
-            Debug.Log(bounds.size);
-            Debug.Log(Resources.Load("bush_tile"));
+            //BoundsInt bounds = new BoundsInt(10, 10, 10, 10, 10, 10);
+            //Debug.Log(bounds.size);
+            //Debug.Log(Resources.Load("bush_tile"));
            
         }
 
