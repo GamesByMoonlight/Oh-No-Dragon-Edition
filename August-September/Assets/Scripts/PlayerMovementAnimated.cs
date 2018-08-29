@@ -24,6 +24,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     //Added animator to script
     Animator anim;
+    DragonType dragonType;
 
     void GetPlayerInput()
     {
@@ -41,6 +42,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
+        dragonType = GetComponent<DragonType>();
     }
 
     // Update is called once per frame
@@ -160,14 +162,12 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y+1, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
 
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    if (tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)).name == "rockTile")
-                    {
-                        Debug.Log("You hit a rock !!");
-                    }
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
+                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    {
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+
+                    }
 
                 }
             }
@@ -179,16 +179,12 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
-
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    if (tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)).name == "rockTile")
+ 
+                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        Debug.Log("You hit a rock !!");
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+
                     }
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
-
                 }
             }
             return; 
@@ -202,12 +198,11 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y -1, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
+                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    {
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
-
+                    }
                 }
             }
             else
@@ -218,12 +213,11 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y, 0);
                     Vector3 regTile = new Vector3(-2, -4, 0);
+                    if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    {
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
-
+                    }
                 }
             }
             return;
@@ -235,12 +229,11 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y - 1, 0);
                 Vector3 regTile = new Vector3(-2, -4, 0);
-
-                // need checks to see state of dragon 
-                Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
+                if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-
+                }
             }
             return;
         }
@@ -252,15 +245,59 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y+1, 0);
                 Vector3 regTile = new Vector3(-2, -4, 0);
-
-                // need checks to see state of dragon 
-                Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
+                if (dragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-
+                }
             }
             return;
         }
 
+    }
+    private bool dragonValidator(TileBase crashingTile)
+    {
+        DragonType.eDragonType d;
+
+        d = dragonType.DragonTypeV;
+
+        switch (d)
+        {
+            case  DragonType.eDragonType.EarthDragon:
+                {
+                    if(crashingTile.name == "rockTile")
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case DragonType.eDragonType.AirDragon:
+                {
+                    if (crashingTile.name == "holeTile_single")
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case DragonType.eDragonType.WaterDragon:
+                {
+                    if (crashingTile.name == "waterTile")
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case DragonType.eDragonType.FireDragon:
+                {
+                    if (crashingTile.name == "treeTile")
+                    {
+                        return true;
+                    }
+                    break;
+                }
+
+        }
+
+        return false;
     }
 }
