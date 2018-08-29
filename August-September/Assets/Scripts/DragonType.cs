@@ -113,7 +113,7 @@ public class DragonType : MonoBehaviour
 
     private void MakePuff()
     {
-        GameObject puff = Instantiate(poof, transform.position, Quaternion.identity);
+        GameObject puff = Instantiate(poof, new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), Quaternion.identity);
         ParticleSystem particles = puff.GetComponent<ParticleSystem>();
 
         var color = particles.colorOverLifetime;
