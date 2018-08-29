@@ -11,7 +11,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     public float baseSpeed;
     public float animBaseSpeed;
     private Rigidbody2D playerRigidBody;
-
+    
 
     // To track movement from input
     private float movePlayerHorizontal;
@@ -20,7 +20,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     Tilemap tm;
     public float frameCount = 0;
     public int count = 0;
-    public int encroachingDoomSpeed = 10;
+    //public int encroachingDoomSpeed = 10;
 
     //Added animator to script
     Animator anim;
@@ -43,6 +43,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
         dragonType = GetComponent<DragonType>();
+        
     }
 
     // Update is called once per frame
@@ -57,7 +58,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
         playerRigidBody.velocity = movement * baseSpeed;
 
         //returns value to animator. when animBaseSpeed is greater than 0.25 animation changes from idle to walking
-        anim.SetFloat ("animBaseSpeed", Mathf.Abs (movePlayerHorizontal));
+        anim.SetFloat ("animBaseSpeed", Mathf.Abs(movePlayerHorizontal) + Mathf.Abs(movePlayerVertical));
         //Debug.Log(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position));
         ////Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position)));
         // tm.SetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position), tm.GetTile(new Vector3Int(-2,-3,0)));
@@ -92,11 +93,12 @@ public class PlayerMovementAnimated : MonoBehaviour {
         frameCount += 1;
         //calls animation method
         */
-        SetAnimation();
+        //SetAnimation();
+
     }
 
     //test animations for flying digging walking and breathing fire
-    void SetAnimation()
+    /*void SetAnimation()
     {
         if(Input.GetKey("z"))   
         {
@@ -123,6 +125,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             anim.SetBool("isFiring", false);
         }
     }
+    */
     private void PlayFootSteps()
     {
         if(movePlayerHorizontal > 0.1f || animBaseSpeed > 0.1f)
@@ -201,7 +204,6 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
                     }
                 }
             }
@@ -273,6 +275,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     if(crashingTile.name == "rockTile")
                     {
+                        dragonType.PlayAnimation();
                         return true;
                     }
                     break;
@@ -281,6 +284,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     if (crashingTile.name == "holeTile_single")
                     {
+                        dragonType.PlayAnimation();
                         return true;
                     }
                     break;
@@ -289,6 +293,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     if (crashingTile.name == "TilesetExample_13") // This is a water tile, dunno how to rename it
                     {
+                        dragonType.PlayAnimation();
                         return true;
                     }
                     break;
@@ -297,6 +302,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     if (crashingTile.name == "treeTile")
                     {
+                        dragonType.PlayAnimation();
                         return true;
                     }
                     break;
