@@ -171,6 +171,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -3, y: 3, z: 0}
+    second:
+      m_TileIndex: 8
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -2, y: 3, z: 0}
     second:
       m_TileIndex: 2
@@ -234,6 +243,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -3, y: 4, z: 0}
+    second:
+      m_TileIndex: 7
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -2, y: 4, z: 0}
     second:
       m_TileIndex: 4
@@ -252,6 +270,8 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+=======
   - first: {x: -8, y: 5, z: 0}
     second:
       m_TileIndex: 10
@@ -279,6 +299,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
   - first: {x: -3, y: 5, z: 0}
     second:
       m_TileIndex: 9
@@ -309,6 +330,17 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+    m_Data: {fileID: 11400000, guid: ab69ec498baefed4289be4b0cbe6ef27, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 2a5fe0674787b1f4f9adb53cdef2b0a3, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 0539638b9ce6e934abd797ca69cc4827, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 30224ffe4db741948b3025113731b7b4, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 187e4ef7756e3974397cc6e5c2a61b50, type: 2}
+=======
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 2a5fe0674787b1f4f9adb53cdef2b0a3, type: 2}
@@ -318,12 +350,15 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 0}
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 72a442b9da7651841a51bb2ae917ab10, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d5167169313adff479ae0d176d9c1020, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e462c4d5ae1794f4ca4b87cafc79372c, type: 2}
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+=======
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 3fb8789de30731b438f48c01bd571267, type: 2}
   - m_RefCount: 1
@@ -343,15 +378,31 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 28a2217e5429eec42b9d9c46cec6dd60, type: 2}
   m_TileSpriteArray:
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
   - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 3fb8789de30731b438f48c01bd571267, type: 2}
+  - m_RefCount: 1
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+    m_Data: {fileID: 11400000, guid: 1270e67f87fda2243986aba7ce286c2b, type: 2}
+  m_TileSpriteArray:
+  - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 2f5b371d083680c41aa02310851824f7, type: 3}
+=======
+    m_Data: {fileID: 21300000, guid: 9c4a67ba8998fa7428c891aabd1093b0, type: 3}
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9c4a67ba8998fa7428c891aabd1093b0, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 24e0eacb551f5394eb721a806b4d4533, type: 3}
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+  - m_RefCount: 2
+    m_Data: {fileID: 21300000, guid: ba06a4d18c98f5741aa1c426e546763d, type: 3}
+  - m_RefCount: 2
+=======
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: ba06a4d18c98f5741aa1c426e546763d, type: 3}
   - m_RefCount: 1
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
     m_Data: {fileID: 21300000, guid: ffa0031104dbefd418237b6218b0b46e, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 2817c532f940f1f458cc85caaa6b8e18, type: 3}
@@ -378,7 +429,11 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 5fa1183bfe80daf4392fb5acdb8b44a8, type: 3}
   m_TileMatrixArray:
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+  - m_RefCount: 11
+=======
   - m_RefCount: 18
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
     m_Data:
       e00: 1
       e01: 0
@@ -397,6 +452,24 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
+<<<<<<< HEAD:August-September/Assets/Palettes/MyPallet.prefab
+  - m_RefCount: 9
+    m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 2
+    m_Data: {r: 0.0754717, g: 0.0736917, b: 0.0736917, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: -3, y: 0, z: 0}
+  m_Size: {x: 3, y: 6, z: 1}
+=======
   - m_RefCount: 12
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 2
@@ -413,6 +486,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -9, y: 0, z: 0}
   m_Size: {x: 9, y: 6, z: 1}
+>>>>>>> 0d1d4caaa16501ba2a000fc1e60b39b2d1a31e06:August-September/Assets/Palettes/MyPallet.prefab
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
