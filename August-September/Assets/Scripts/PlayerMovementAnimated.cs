@@ -9,6 +9,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
     [SerializeField]
     public AudioSource audioS;
 
+
+    public GameObject Fire;
     public float baseSpeed;
     public float animBaseSpeed;
     private Rigidbody2D playerRigidBody;
