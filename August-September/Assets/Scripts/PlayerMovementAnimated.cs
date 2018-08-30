@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Audio;
 
 public class PlayerMovementAnimated : MonoBehaviour {
 
     [SerializeField]
     public AudioSource audioS;
 
+
+    public GameObject Fire;
     public float baseSpeed;
     public float animBaseSpeed;
     private Rigidbody2D playerRigidBody;
-
+    
 
     // To track movement from input
     private float movePlayerHorizontal;
@@ -20,17 +23,18 @@ public class PlayerMovementAnimated : MonoBehaviour {
     Tilemap tm;
     public float frameCount = 0;
     public int count = 0;
-    public int encroachingDoomSpeed = 10;
+    //public int encroachingDoomSpeed = 10;
 
     //Added animator to script
     Animator anim;
+    DragonType dragonType;
 
     void GetPlayerInput()
     {
         movePlayerHorizontal = Input.GetAxis("Horizontal");
         movePlayerVertical = Input.GetAxis("Vertical");
-        Debug.Log("Horizontal :"+movePlayerHorizontal);
-        Debug.Log("Horizontal :" + movePlayerVertical);
+        //Debug.Log("Horizontal :"+movePlayerHorizontal);
+        //Debug.Log("Horizontal :" + movePlayerVertical);
 
     }
 
@@ -41,23 +45,24 @@ public class PlayerMovementAnimated : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
+        dragonType = GetComponent<DragonType>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         GetPlayerInput();
-        PlayFootSteps();
-
+        
         movement = new Vector2(movePlayerHorizontal, movePlayerVertical);
 
         // Move Character
         playerRigidBody.velocity = movement * baseSpeed;
 
         //returns value to animator. when animBaseSpeed is greater than 0.25 animation changes from idle to walking
-        anim.SetFloat ("animBaseSpeed", Mathf.Abs (movePlayerHorizontal));
-        Debug.Log(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position));
-        //Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position)));
+        anim.SetFloat ("animBaseSpeed", Mathf.Abs(movePlayerHorizontal) + Mathf.Abs(movePlayerVertical));
+        //Debug.Log(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position));
+        ////Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position)));
         // tm.SetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position), tm.GetTile(new Vector3Int(-2,-3,0)));
 
         /*
@@ -90,11 +95,12 @@ public class PlayerMovementAnimated : MonoBehaviour {
         frameCount += 1;
         //calls animation method
         */
-        SetAnimation();
+        //SetAnimation();
+
     }
 
     //test animations for flying digging walking and breathing fire
-    void SetAnimation()
+    /*void SetAnimation()
     {
         if(Input.GetKey("z"))   
         {
@@ -121,7 +127,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
             anim.SetBool("isFiring", false);
         }
     }
-    private void PlayFootSteps()
+    */
+    /*private void PlayFootSteps()
     {
         if(movePlayerHorizontal > 0.1f || animBaseSpeed > 0.1f)
         {
@@ -134,6 +141,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             audioS.loop = false;
         }
     }
+    */
 
     // Update is called once per frame
     //     void Update () {
@@ -147,48 +155,42 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Made contact with a tile");
+        //Debug.Log("Made contact with a tile");
       
         if (movePlayerHorizontal>0 && (movePlayerHorizontal > Mathf.Abs(movePlayerVertical) || movePlayerHorizontal == movePlayerVertical))
         {
             if(movePlayerHorizontal == movePlayerVertical)
             {
-                Debug.Log("Moving in the positive x direction");
+                //Debug.Log("Moving in the positive x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y+1, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
+                    Vector3 regTile = new Vector3(-1, -1, 0);
 
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    if (tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)).name == "rockTile")
+
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        Debug.Log("You hit a rock !!");
-                    }
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
+                    }
 
                 }
             }
             else
             {
-                Debug.Log("Moving in the positive x direction");
+                //Debug.Log("Moving in the positive x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
-
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    if (tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)).name == "rockTile")
+                    Vector3 regTile = new Vector3(-1, -1, 0);
+ 
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        Debug.Log("You hit a rock !!");
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+
                     }
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
-
                 }
             }
             return; 
@@ -196,71 +198,121 @@ public class PlayerMovementAnimated : MonoBehaviour {
         {
             if (movePlayerHorizontal == movePlayerVertical)
             {
-                Debug.Log("Moving in the negative x direction");
+                //Debug.Log("Moving in the negative x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y -1, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
-
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
-
+                    Vector3 regTile = new Vector3(-1, -1, 0);
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    {
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                    }
                 }
             }
             else
             {
-                Debug.Log("Moving in the negative x direction");
+                //Debug.Log("Moving in the negative x direction");
                 foreach (ContactPoint2D Smash in collision.contacts)
                 {
-                    Debug.Log("In loop");
+                    //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y, 0);
-                    Vector3 regTile = new Vector3(-2, -4, 0);
+                    Vector3 regTile = new Vector3(-1, -1, 0);
+                    if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                    {
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-                    // need checks to see state of dragon 
-                    Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
-
-
+                    }
                 }
             }
             return;
         }else if (movePlayerVertical < 0 && movePlayerVertical < Mathf.Abs(movePlayerHorizontal))
         {
-            Debug.Log("Moving in the negative y direction");
+            //Debug.Log("Moving in the negative y direction");
             foreach (ContactPoint2D Smash in collision.contacts)
             {
-                Debug.Log("In loop");
+                //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y - 1, 0);
-                Vector3 regTile = new Vector3(-2, -4, 0);
-
-                // need checks to see state of dragon 
-                Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
+                Vector3 regTile = new Vector3(-1, -1, 0);
+                if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-
+                }
             }
             return;
         }
         if (movePlayerVertical > 0 && movePlayerVertical > Mathf.Abs(movePlayerHorizontal))
         {
-            Debug.Log("Moving in the positive y direction");
+            //Debug.Log("Moving in the positive y direction");
             foreach (ContactPoint2D Smash in collision.contacts)
             {
-                Debug.Log("In loop");
+                //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y+1, 0);
-                Vector3 regTile = new Vector3(-2, -4, 0);
-
-                // need checks to see state of dragon 
-                Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint)));
+                Vector3 regTile = new Vector3(-1, -1, 0);
+                if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
+                {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
 
-
+                }
             }
             return;
         }
 
+    }
+    private bool DragonValidator(TileBase crashingTile)
+    {
+        if (crashingTile == null)
+        {
+            return false;
+        }
+
+        DragonType.eDragonType d;
+
+        d = dragonType.DragonTypeV;
+
+        switch (d)
+        {
+            
+            case  DragonType.eDragonType.EarthDragon:
+                {
+                    if(crashingTile.name == "rockTile")
+                    {
+                        dragonType.PlayAnimation();
+                        return true;
+                    }
+                    break;
+                }
+            case DragonType.eDragonType.AirDragon:
+                {
+                    if (crashingTile.name == "holeTile_single")
+                    {
+                        dragonType.PlayAnimation();
+                        return true;
+                    }
+                    break;
+                }
+            case DragonType.eDragonType.WaterDragon:
+                {
+                    if (crashingTile.name == "TilesetExample_13") // This is a water tile, dunno how to rename it
+                    {
+                        dragonType.PlayAnimation();
+                        return true;
+                    }
+                    break;
+                }
+            case DragonType.eDragonType.FireDragon:
+                {
+                    if (crashingTile.name == "treeTile")
+                    {
+                        dragonType.PlayAnimation();
+                        return true;
+                    }
+                    break;
+                }
+
+        }
+
+        return false;
     }
 }

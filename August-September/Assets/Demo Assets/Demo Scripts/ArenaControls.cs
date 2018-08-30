@@ -23,7 +23,7 @@ public class ArenaControls : MonoBehaviour {
             float yForce = Input.GetAxis("Vertical") * baseSpeed;
             Vector2 impulse = new Vector2(xForce, yForce);
             if (impulse.magnitude > 0)
-                Debug.Log("Moving P1");
+                //Debug.Log("Moving P1");
             myRigidBody.AddForce(impulse);
 
             if (Input.GetButton("LStickClick"))
@@ -39,7 +39,7 @@ public class ArenaControls : MonoBehaviour {
             float yForce = Input.GetAxis("RVertical") * baseSpeed;
             Vector2 impulse = new Vector2(xForce, yForce);
             if (impulse.magnitude > 0)
-                Debug.Log("Moving P2");
+                //Debug.Log("Moving P2");
             myRigidBody.AddForce(impulse);
 
             if (Input.GetButton("RStickClick"))

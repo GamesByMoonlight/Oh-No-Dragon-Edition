@@ -1,8 +1,8 @@
 ﻿//this script allows easy add/remove of sounds including modifiable properties 
-//like audio clip, loop, spacial blend...
+//like audioSource clip, loop, spacial blend...
 
 
-using UnityEngine.Audio; //main audio namespace
+using UnityEngine.Audio; //main audioSource namespace
 using System;
 using UnityEngine;
 
