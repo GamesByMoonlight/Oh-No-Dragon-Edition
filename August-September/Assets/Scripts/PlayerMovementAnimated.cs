@@ -166,12 +166,12 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y+1, 0);
-                    Vector3 regTile = new Vector3(-1, -1, 0);
+                    
 
 
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
 
                     }
 
@@ -184,11 +184,11 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y, 0);
-                    Vector3 regTile = new Vector3(-1, -1, 0);
+                    
  
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
 
                     }
                 }
@@ -203,10 +203,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y -1, 0);
-                    Vector3 regTile = new Vector3(-1, -1, 0);
+                    
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
                     }
                 }
             }
@@ -217,10 +217,9 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x - 1, Smash.point.y, 0);
-                    Vector3 regTile = new Vector3(-1, -1, 0);
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
-                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                        tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
 
                     }
                 }
@@ -233,10 +232,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
             {
                 //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y - 1, 0);
-                Vector3 regTile = new Vector3(-1, -1, 0);
+                
                 if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
 
                 }
             }
@@ -249,10 +248,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
             {
                 //Debug.Log("In loop");
                 Vector3 Smashpoint = new Vector3(Smash.point.x, Smash.point.y+1, 0);
-                Vector3 regTile = new Vector3(-1, -1, 0);
+                
                 if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
-                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), tm.GetTile(tm.layoutGrid.WorldToCell(regTile)));
+                    tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
 
                 }
             }
@@ -267,6 +266,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             return false;
         }
 
+
         DragonType.eDragonType d;
 
         d = dragonType.DragonTypeV;
@@ -276,7 +276,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
             
             case  DragonType.eDragonType.EarthDragon:
                 {
-                    if(crashingTile.name == "rockTile")
+                    if(crashingTile.name == "rockTile 1" | crashingTile.name == "rockTile")
                     {
                         dragonType.PlayAnimation();
                         return true;
@@ -285,7 +285,11 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 }
             case DragonType.eDragonType.AirDragon:
                 {
-                    if (crashingTile.name == "holeTile_single")
+                    if (crashingTile.name == "singleSpikeTile" |
+                        crashingTile.name == "centerSpikeTile" |
+                        crashingTile.name == "leftSpikeTile" | 
+                        crashingTile.name == "rightSpikeTile" |
+                        crashingTile.name == "holeTile_single")
                     {
                         dragonType.PlayAnimation();
                         return true;
@@ -294,7 +298,17 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 }
             case DragonType.eDragonType.WaterDragon:
                 {
-                    if (crashingTile.name == "TilesetExample_13") // This is a water tile, dunno how to rename it
+                    if (crashingTile.name == "horzwater" |
+                        crashingTile.name == "vertWater" |
+                        crashingTile.name == "waterBottom" |
+                        crashingTile.name == "waterLeft" |
+                        crashingTile.name == "waterRight" |
+                        crashingTile.name == "waterTop" |
+                        crashingTile.name == "elbowWater1" |
+                        crashingTile.name == "elbowWater2" |
+                        crashingTile.name == "elbowWater3" |
+                        crashingTile.name == "elbowWater4" |
+                        crashingTile.name == "TilesetExample_13" ) 
                     {
                         dragonType.PlayAnimation();
                         return true;
@@ -303,7 +317,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 }
             case DragonType.eDragonType.FireDragon:
                 {
-                    if (crashingTile.name == "treeTile")
+                    if (crashingTile.name == "treeTile 1" |
+                        crashingTile.name == "treeTile")
                     {
                         dragonType.PlayAnimation();
                         return true;
