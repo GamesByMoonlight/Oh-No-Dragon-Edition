@@ -21,16 +21,20 @@ public class TileGen_Boundary : MonoBehaviour {
         for (int i = 0; i < MapLength; i++)
         {
             // Draw top walls.
-            tilemap.SetTile(new Vector3Int(MapXStart + i, 4, 0), topTile);
-            tilemap.SetTile(new Vector3Int(MapXStart + i, 3, 0), bottomTile);
+            //tilemap.SetTile(new Vector3Int(MapXStart + i, 3, 0), topTile);
+           //tilemap.SetTile(new Vector3Int(MapXStart + i, 2, 0), bottomTile);
 
             // Draw bottom walls.
-            tilemap.SetTile(new Vector3Int(MapXStart + i, -4, 0), topTile);
-            tilemap.SetTile(new Vector3Int(MapXStart + i, -5, 0), bottomTile);
+            //tilemap.SetTile(new Vector3Int(MapXStart + i, -3, 0), topTile);
+            //tilemap.SetTile(new Vector3Int(MapXStart + i, -4, 0), bottomTile);
 
+            // Draw top walls.
+            //Edited to include new boundary tiles -mas
+            tilemap.SetTile(new Vector3Int(MapXStart + i, 2, 0), bottomTile);
 
-
-        }
+            // Draw bottom walls.
+            tilemap.SetTile(new Vector3Int(MapXStart + i, -3, 0), topTile);
+         }
 
         //Set the left endcap.
         for (int i = 0; i < 10; i++)
