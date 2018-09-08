@@ -8,6 +8,12 @@ public class MobMovement : MonoBehaviour {
     public UICounter counter;
 
 	// Update is called once per frame
+
+    void Start()
+    {
+        counter = FindObjectOfType<UICounter>();
+    }
+
 	void Update () {
         Vector2 newPosition = transform.position;
 
