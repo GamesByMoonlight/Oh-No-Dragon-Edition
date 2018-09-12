@@ -15,6 +15,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
     public float animBaseSpeed;
     private Rigidbody2D playerRigidBody;
     
+    //Can player move? If he is dead, he can not.
+    private bool canMove;
 
     // To track movement from input
     private float movePlayerHorizontal;
@@ -46,6 +48,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
         dragonType = GetComponent<DragonType>();
+        canMove = true;
         
     }
 
@@ -56,8 +59,11 @@ public class PlayerMovementAnimated : MonoBehaviour {
         
         movement = new Vector2(movePlayerHorizontal, movePlayerVertical);
 
-        // Move Character
-        playerRigidBody.velocity = movement * baseSpeed;
+        // Move Character if character is alive
+        if(canMove)
+            playerRigidBody.velocity = movement * baseSpeed;
+        else
+            playerRigidBody.velocity = new Vector2(0,0);
 
         //returns value to animator. when animBaseSpeed is greater than 0.25 animation changes from idle to walking
         anim.SetFloat ("animBaseSpeed", Mathf.Abs(movePlayerHorizontal) + Mathf.Abs(movePlayerVertical));
@@ -99,35 +105,6 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     }
 
-    //test animations for flying digging walking and breathing fire
-    /*void SetAnimation()
-    {
-        if(Input.GetKey("z"))   
-        {
-            anim.SetBool("isFlying", true);
-            anim.SetBool("isDigging", false);
-            anim.SetBool("isFiring", false);
-        }
-        else if(Input.GetKey("x")) 
-        {
-            anim.SetBool("isFlying", false);
-            anim.SetBool("isDigging", true);
-            anim.SetBool("isFiring", false);
-        }
-        else if(Input.GetKey("c")) 
-        {
-            anim.SetBool("isFlying", false);
-            anim.SetBool("isDigging", false);
-            anim.SetBool("isFiring", true);
-        }
-        else
-        {
-            anim.SetBool("isFlying", false);
-            anim.SetBool("isDigging", false);
-            anim.SetBool("isFiring", false);
-        }
-    }
-    */
     /*private void PlayFootSteps()
     {
         if(movePlayerHorizontal > 0.1f || animBaseSpeed > 0.1f)
@@ -258,6 +235,23 @@ public class PlayerMovementAnimated : MonoBehaviour {
             return;
         }
 
+    }
+
+    //death sequence starts death animation, stops player from moving, and calls DestroyMe
+    public void ImDying()
+    {
+        canMove = false;
+        anim.SetTrigger("Death");
+        StartCoroutine("DestroyMe");
+    }
+
+    //After death animation this disables sprite renderer and calls TriggerLevelEnd
+    //needs to be modified to restart level instead of advancing to next
+    IEnumerator DestroyMe()
+    {
+        yield return new WaitForSeconds(1.2f);
+        dragonType.ClearSprite();
+        FindObjectOfType<EventManager>().TriggerLevelEnd();
     }
     private bool DragonValidator(TileBase crashingTile)
     {
