@@ -7,6 +7,8 @@ public class MobMovement : MonoBehaviour {
     public float mobSpeed = 10;
     public UICounter counter;
 
+    public PlayerMovementAnimated player;
+
 	// Update is called once per frame
 	void Update () {
         Vector2 newPosition = transform.position;
@@ -20,6 +22,7 @@ public class MobMovement : MonoBehaviour {
     {
         if (col.CompareTag("Player"))
         {
+            player.ImDying();
             counter.Finish();
         }
     }

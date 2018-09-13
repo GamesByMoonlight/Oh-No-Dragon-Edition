@@ -23,6 +23,7 @@ public class DragonType : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.enabled = true;
         ChangeDragonColor();
     }
 
@@ -62,6 +63,10 @@ public class DragonType : MonoBehaviour
         }
     }
 
+    public void ClearSprite()
+    {
+        spriteRenderer.enabled = false;
+    }
     private void ChangeDragonColor()
     {
 
