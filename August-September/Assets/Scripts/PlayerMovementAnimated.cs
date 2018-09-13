@@ -11,6 +11,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
 
     public GameObject Fire;
+
+    //bones, body parts, remains.
+    public GameObject Splatter;
+
     public float baseSpeed;
     public float animBaseSpeed;
     private Rigidbody2D playerRigidBody;
@@ -251,6 +255,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     {
         yield return new WaitForSeconds(1.2f);
         dragonType.ClearSprite();
+        GameObject mySplatter = Instantiate(Splatter, transform.position, Quaternion.identity) as GameObject;
         FindObjectOfType<EventManager>().TriggerLevelEnd();
     }
     private bool DragonValidator(TileBase crashingTile)
