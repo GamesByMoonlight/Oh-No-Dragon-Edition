@@ -10,8 +10,6 @@ public class PlayerMovementAnimated : MonoBehaviour {
     public AudioSource audioS;
 
 
-    public GameObject Fire;
-
     //bones, body parts, remains.
     public GameObject Splatter;
 
@@ -29,11 +27,14 @@ public class PlayerMovementAnimated : MonoBehaviour {
     Tilemap tm;
     public float frameCount = 0;
     public int count = 0;
-    //public int encroachingDoomSpeed = 10;
+    
 
     //Added animator to script
     Animator anim;
+
     DragonType dragonType;
+
+    Mana manaScript;
 
     void GetPlayerInput()
     {
@@ -52,6 +53,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
         dragonType = GetComponent<DragonType>();
+        manaScript = FindObjectOfType<Mana>();
         canMove = true;
         
     }
@@ -278,6 +280,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     if(crashingTile.name == "rockTile 1" | crashingTile.name == "rockTile")
                     {
                         dragonType.PlayAnimation();
+                        DragonPowerUp(d);
                         return true;
                     }
                     break;
@@ -291,6 +294,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                         crashingTile.name == "holeTile_single")
                     {
                         dragonType.PlayAnimation();
+                        DragonPowerUp(d);
                         return true;
                     }
                     break;
@@ -310,6 +314,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                         crashingTile.name == "TilesetExample_13" ) 
                     {
                         dragonType.PlayAnimation();
+                        DragonPowerUp(d);
                         return true;
                     }
                     break;
@@ -320,6 +325,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                         crashingTile.name == "treeTile")
                     {
                         dragonType.PlayAnimation();
+                        DragonPowerUp(d);
                         return true;
                     }
                     break;
@@ -329,4 +335,16 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
         return false;
     }
+
+    public delegate void AddManaEventHandler(DragonType.eDragonType dragonType);
+    public event AddManaEventHandler ManaAdded;
+    
+    void DragonPowerUp(DragonType.eDragonType dragonType)
+    {
+        if (ManaAdded != null)
+        {
+            ManaAdded(dragonType);
+        }
+    }
+
 }

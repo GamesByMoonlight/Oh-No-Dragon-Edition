@@ -87,6 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224428618783882874}
+  - component: {fileID: 114365977759155002}
   m_Layer: 0
   m_Name: Dragon Wheel
   m_TagString: Untagged
@@ -182,6 +183,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114365977759155002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797222070332912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecedff81f34d3f04ba8f4cbb276addd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ManaRed: 0
+  ManaBlue: 0
+  ManaGreen: 0
+  ManaYellow: 0
+  ManaRedMax: 100
+  ManaBlueMax: 100
+  ManaGreenMax: 100
+  ManaYellowMax: 100
+  ManaToAdd: 10
 --- !u!114 &114564822182200684
 MonoBehaviour:
   m_ObjectHideFlags: 1

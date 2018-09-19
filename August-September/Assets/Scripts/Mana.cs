@@ -14,46 +14,68 @@ public class Mana : MonoBehaviour
     public float ManaGreenMax;
     public float ManaYellowMax;
 
-    public float ManaRedBarL; // bar length
-    public float ManaBlueBarL;
-    public float ManaGreenBarL;
-    public float ManaYellowBarL;
+    [SerializeField]
+    private float ManaToAdd;
 
-    public float ManaRedBarP;  //percentage of Mana 
-    public float ManaBlueBarP;
-    public float ManaGreenBarP;
-    public float ManaYellowBarP;
-    // Use this for initialization
+    public bool AllDragonsFull { get { return (ManaRed == ManaRedMax && ManaYellow == ManaYellowMax && ManaBlue == ManaBlueMax && ManaGreen == ManaGreenMax); } }
+
+    void OnEnable()
+    {
+        FindObjectOfType<PlayerMovementAnimated>().ManaAdded += AddMana;
+    }
+
+    void OnDisable()
+    {
+        PlayerMovementAnimated player = FindObjectOfType<PlayerMovementAnimated>();
+        if (player)
+        {
+            player.ManaAdded -= AddMana;
+        }
+    }
+
+    //public float ManaRedBarL; // bar length
+    //public float ManaBlueBarL;
+    //public float ManaGreenBarL;
+    //public float ManaYellowBarL;
+    //
+    //public float ManaRedBarP;  //percentage of Mana 
+    //public float ManaBlueBarP;
+    //public float ManaGreenBarP;
+    //public float ManaYellowBarP;
+
 
     public void ResetAllMana()
     {   
-         ManaRed =0;
+        ManaRed =0;
         ManaBlue =0;
         ManaGreen=0;
         ManaYellow=0;
-}
+    }
 
-    public int SetMana(DragonType.eDragonType dragonType, int AddManaAmount)
+    public void AddMana(DragonType.eDragonType dragonType)
     {
-        // to Subtract mana use a negative integer
-        int ReturnedManaTotal=0;
-
+        
         switch (dragonType)
         {
             case DragonType.eDragonType.AirDragon:    
-                    ManaYellow += AddManaAmount;
-                    return (int)ManaYellow;         
+                ManaYellow += ManaToAdd;
+                ManaYellow = Mathf.Clamp(ManaYellow, 0f, ManaYellowMax);
+                return;         
             case DragonType.eDragonType.EarthDragon:
-                ManaGreen += AddManaAmount;
-                return (int)ManaGreen;      
+                ManaGreen += ManaToAdd;
+                ManaGreen = Mathf.Clamp(ManaGreen, 0f, ManaGreenMax);
+                return ;      
             case DragonType.eDragonType.FireDragon:
-                ManaRed += AddManaAmount;
-                return (int)ManaRed;
+                ManaRed += ManaToAdd;
+                ManaRed = Mathf.Clamp(ManaRed, 0f, ManaRedMax);
+                return ;
             case DragonType.eDragonType.WaterDragon:
-                ManaBlue += AddManaAmount;
-                return (int)ManaBlue;
+                ManaBlue += ManaToAdd;
+                ManaBlue = Mathf.Clamp(ManaBlue, 0f, ManaBlueMax);
+                return;
         }
-        return ReturnedManaTotal;
+
+        return;
     }
 
 
@@ -64,65 +86,20 @@ public class Mana : MonoBehaviour
         switch (dragonType)
         {
             case DragonType.eDragonType.AirDragon:
-                pct = ManaYellowBarP;
+                pct = Mathf.Clamp((ManaYellow / ManaYellowMax) * 100, 0, 100);
                 break;
             case DragonType.eDragonType.EarthDragon:
-                pct = ManaGreenBarP;
+                pct = pct = Mathf.Clamp((ManaGreen / ManaGreenMax) * 100, 0, 100);
                 break;
             case DragonType.eDragonType.FireDragon:
-                pct = ManaRedBarP;
+                pct = Mathf.Clamp((ManaRed / ManaRedMax) * 100, 0, 100);
                 break;
             case DragonType.eDragonType.WaterDragon:
-                pct = ManaBlueBarP;
+                pct = Mathf.Clamp((ManaBlue / ManaBlueMax) * 100, 0, 100);
                 break;
         }
         return pct;
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (ManaRed <= ManaRedMax)
-        {
-            ManaRedBarP = ManaRed / ManaRedMax;
-            ManaRedBarL = ManaRedBarP;
-         }
-        if (ManaBlue <= ManaBlueMax)
-        {
-            ManaBlueBarP = ManaBlue / ManaBlueMax;
-            ManaBlueBarL = ManaBlueBarP * 100;
-        }
-        if (ManaGreen <= ManaGreenMax)
-        {
-            ManaGreenBarP = ManaGreen / ManaGreenMax;
-            ManaGreenBarL = ManaGreenBarP * 100;
-        }
-        if (ManaYellow <= ManaYellowMax)
-        {
-            ManaYellowBarP = ManaYellow / ManaYellowMax;
-            ManaYellowBarL = ManaYellowBarP * 100;
-           // Debug.Log(  ManaYellowBarP);
-        }
-
-        if (ManaRed > ManaRedMax)
-            ManaRed = ManaRedMax;
-        if (ManaBlue > ManaBlueMax)
-            ManaBlue = ManaBlueMax;
-        if (ManaGreen > ManaGreenMax)
-            ManaGreen = ManaGreenMax;
-        if (ManaYellow > ManaYellowMax)
-            ManaYellow = ManaYellowMax;
-
-        if (ManaRed < 0)
-            ManaRed = 0;
-        if (ManaBlue < 0)
-            ManaBlue = 0;
-        if (ManaGreen < 0)
-            ManaGreen = 0;
-        if (ManaYellow < 0)
-            ManaYellow = 0;
-
-
-    }
+    
 }

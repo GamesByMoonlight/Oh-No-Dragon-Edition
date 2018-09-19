@@ -376,7 +376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioS: {fileID: 82228175715898432}
-  Fire: {fileID: 0}
   Splatter: {fileID: 1932281351270988, guid: 4ce63b76d52cb634eb4d0f2c68f8e72d, type: 2}
   baseSpeed: 5
   animBaseSpeed: 0
