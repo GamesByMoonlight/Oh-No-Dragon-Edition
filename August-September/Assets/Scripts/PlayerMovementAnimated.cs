@@ -34,8 +34,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     DragonType dragonType;
 
-    Mana manaScript;
-
+    
     void GetPlayerInput()
     {
         movePlayerHorizontal = Input.GetAxis("Horizontal");
@@ -53,7 +52,6 @@ public class PlayerMovementAnimated : MonoBehaviour {
         playerRigidBody = GetComponent<Rigidbody2D>();
         tm = GameObject.FindGameObjectWithTag("Tiles").GetComponent<Tilemap>();
         dragonType = GetComponent<DragonType>();
-        manaScript = FindObjectOfType<Mana>();
         canMove = true;
         
     }

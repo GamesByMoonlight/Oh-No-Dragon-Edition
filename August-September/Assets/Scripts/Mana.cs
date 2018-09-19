@@ -89,7 +89,7 @@ public class Mana : MonoBehaviour
                 pct = Mathf.Clamp((ManaYellow / ManaYellowMax) * 100, 0, 100);
                 break;
             case DragonType.eDragonType.EarthDragon:
-                pct = pct = Mathf.Clamp((ManaGreen / ManaGreenMax) * 100, 0, 100);
+                pct = Mathf.Clamp((ManaGreen / ManaGreenMax) * 100, 0, 100);
                 break;
             case DragonType.eDragonType.FireDragon:
                 pct = Mathf.Clamp((ManaRed / ManaRedMax) * 100, 0, 100);
