@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4439730275052714}
   - component: {fileID: 198460705766448924}
   - component: {fileID: 199553664041894990}
+  - component: {fileID: 114323220652353888}
   m_Layer: 0
   m_Name: rockBreak
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114323220652353888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589473213606322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4d582f75b15864180007537c83dcdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1.5
 --- !u!198 &198460705766448924
 ParticleSystem:
   m_ObjectHideFlags: 1

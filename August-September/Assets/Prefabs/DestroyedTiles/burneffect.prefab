@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4239200762466142}
   - component: {fileID: 198447825702526936}
   - component: {fileID: 199421279014150806}
+  - component: {fileID: 114573672892323126}
   m_Layer: 0
   m_Name: burneffect
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114573672892323126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537531092880194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4d582f75b15864180007537c83dcdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1.5
 --- !u!198 &198447825702526936
 ParticleSystem:
   m_ObjectHideFlags: 1

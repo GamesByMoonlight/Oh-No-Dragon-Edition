@@ -377,6 +377,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioS: {fileID: 82228175715898432}
   Splatter: {fileID: 1932281351270988, guid: 4ce63b76d52cb634eb4d0f2c68f8e72d, type: 2}
+  DestroyedTileParticles:
+  - {fileID: 1537531092880194, guid: b63856a9e95cae74e8f2bd1ce409756f, type: 2}
+  - {fileID: 1589473213606322, guid: fd1fd84eaee40f94ca9d2f9585beddca, type: 2}
+  - {fileID: 1679426522426452, guid: ff54524752926c241ba37fc36c5a0f94, type: 2}
   baseSpeed: 5
   animBaseSpeed: 0
   frameCount: 0
