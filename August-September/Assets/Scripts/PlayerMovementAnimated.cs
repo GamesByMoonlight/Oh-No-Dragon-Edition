@@ -9,9 +9,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
     [SerializeField]
     public AudioSource audioS;
 
-
     //bones, body parts, remains.
     public GameObject Splatter;
+
+    public GameObject[] DestroyedTileParticles;
 
     public float baseSpeed;
     public float animBaseSpeed;
@@ -136,8 +137,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //Debug.Log("Made contact with a tile");
-      
+        
         if (movePlayerHorizontal>0 && (movePlayerHorizontal > Mathf.Abs(movePlayerVertical) || movePlayerHorizontal == movePlayerVertical))
         {
             if(movePlayerHorizontal == movePlayerVertical)
@@ -147,13 +147,13 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     //Debug.Log("In loop");
                     Vector3 Smashpoint = new Vector3(Smash.point.x + 1, Smash.point.y+1, 0);
-                    
 
 
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
+                        
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
-
+                        CreateParticles(tm.layoutGrid.CellToWorld(tm.layoutGrid.WorldToCell(Smashpoint)));
                     }
 
                 }
@@ -170,7 +170,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
-
+                        CreateParticles(tm.layoutGrid.CellToWorld(tm.layoutGrid.WorldToCell(Smashpoint)));
                     }
                 }
             }
@@ -188,6 +188,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
+                        CreateParticles(tm.layoutGrid.CellToWorld(tm.layoutGrid.WorldToCell(Smashpoint)));
                     }
                 }
             }
@@ -201,7 +202,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                     {
                         tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
-
+                        CreateParticles(tm.layoutGrid.CellToWorld(tm.layoutGrid.WorldToCell(Smashpoint)));
                     }
                 }
             }
@@ -217,7 +218,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
-
+                    CreateParticles(tm.layoutGrid.CellToWorld(tm.layoutGrid.WorldToCell(Smashpoint)));
                 }
             }
             return;
@@ -233,7 +234,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 if (DragonValidator(tm.GetTile(tm.layoutGrid.WorldToCell(Smashpoint))))
                 {
                     tm.SetTile(tm.layoutGrid.WorldToCell(Smashpoint), null);
-
+                    CreateParticles(tm.layoutGrid.CellToWorld(tm.layoutGrid.WorldToCell(Smashpoint)));
                 }
             }
             return;
@@ -267,8 +268,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
 
         DragonType.eDragonType d;
-
         d = dragonType.DragonTypeV;
+
 
         switch (d)
         {
@@ -324,6 +325,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     {
                         dragonType.PlayAnimation();
                         DragonPowerUp(d);
+                        
                         return true;
                     }
                     break;
@@ -333,6 +335,30 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
         return false;
     }
+
+
+    void CreateParticles(Vector3 locationOfEffect)
+    {
+        locationOfEffect += new Vector3(0.5f, 0.5f, 0f);
+
+        switch (dragonType.DragonTypeV)
+            {
+            case DragonType.eDragonType.FireDragon:
+                Instantiate(DestroyedTileParticles[0], locationOfEffect, Quaternion.identity);
+                break;
+            case DragonType.eDragonType.WaterDragon:
+                Instantiate(DestroyedTileParticles[2], locationOfEffect, Quaternion.identity);
+                break;
+            case DragonType.eDragonType.EarthDragon:
+                Instantiate(DestroyedTileParticles[1], locationOfEffect, Quaternion.identity);
+                break;
+        }
+        
+
+
+        return;
+    }
+
 
     public delegate void AddManaEventHandler(DragonType.eDragonType dragonType);
     public event AddManaEventHandler ManaAdded;
