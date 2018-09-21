@@ -3,31 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerLives : MonoBehaviour {
+public class PlayerLives  {
 
-    public int lives { get; set; }
-    public Text playerLives;
+    public static int Lives { get; set; }
+    
 
-    // Use this for initialization
-    void Start () {
-        lives = 3;
-        playerLives.color = Color.blue;
-        DontDestroyOnLoad(this.gameObject);
-    }
-	
-	// Update is called once per frame
-	void Update ()
+    public static void RemoveLife()
     {
-        playerLives.text =  lives.ToString();
+        Lives = Mathf.Max(Lives-1, 0);
     }
 
-    public void removeLife()
+    public static void ResetLives(int lives)
     {
-        lives -= lives;
-        playerLives.text =  lives.ToString();
-
+        Lives = lives;
     }
-
-
-
 }
