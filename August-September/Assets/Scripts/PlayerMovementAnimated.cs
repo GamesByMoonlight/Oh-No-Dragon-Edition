@@ -257,8 +257,8 @@ public class PlayerMovementAnimated : MonoBehaviour {
         yield return new WaitForSeconds(1.2f);
         dragonType.ClearSprite();
         GameObject mySplatter = Instantiate(Splatter, transform.position, Quaternion.identity) as GameObject;
-        FindObjectOfType<EventManager>().TriggerLevelEnd();
     }
+
     private bool DragonValidator(TileBase crashingTile)
     {
         if (crashingTile == null)
@@ -369,6 +369,16 @@ public class PlayerMovementAnimated : MonoBehaviour {
         {
             ManaAdded(dragonType);
         }
+    }
+
+    void OnEnable()
+    {
+        EventManager.OnPlayerDeath += ImDying;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnPlayerDeath -= ImDying;
     }
 
 }

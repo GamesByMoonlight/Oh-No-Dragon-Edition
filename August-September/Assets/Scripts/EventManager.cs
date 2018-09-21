@@ -5,8 +5,10 @@ using UnityEngine;
 public class EventManager : MonoBehaviour {
 
     public delegate void EndLevel();
+    public delegate void PlayerDeath();
 
     public static event EndLevel OnLevelEnd;
+    public static event PlayerDeath OnPlayerDeath;
 
     public static EventManager instance = null;
 
@@ -25,13 +27,19 @@ public class EventManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    public void TriggerLevelEnd()
+    public static void TriggerLevelEnd()
     {
-        Debug.Log("Level End Triggered");
-
         if (OnLevelEnd != null)
         {
             OnLevelEnd();
+        }
+    }
+
+    public static void TriggerPlayerDeath()
+    {
+        if (OnPlayerDeath!= null)
+        {
+            OnPlayerDeath();
         }
     }
 }

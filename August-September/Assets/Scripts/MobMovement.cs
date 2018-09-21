@@ -22,7 +22,7 @@ public class MobMovement : MonoBehaviour {
     {
         if (col.CompareTag("Player"))
         {
-            player.ImDying();
+            EventManager.TriggerPlayerDeath();
             counter.Finish();
         }
     }
