@@ -37,6 +37,9 @@ public class EventManager : MonoBehaviour {
 
     public static void TriggerPlayerDeath()
     {
+
+        PlayerLives.RemoveLife();
+
         if (OnPlayerDeath!= null)
         {
             OnPlayerDeath();
