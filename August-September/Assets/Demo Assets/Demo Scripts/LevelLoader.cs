@@ -30,11 +30,17 @@ public class LevelLoader : MonoBehaviour {
 
     void LoadLevelOnPlayerDeath()
     {
-        Debug.Log("LoadLevelOnPlayerDeath called");
-
         // If PlayerLives.Lives is greater than zero
-            // Load the same scene
-            // Otherwise load the title screen
+        if(PlayerLives.Lives > 0)
+        {
+			int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+			StartCoroutine(DelayedLevelLoad((sceneIndex), delayOnPlayerDeath));
+		}
+        else
+        {
+	        int sceneIndex = 0;
+			StartCoroutine(DelayedLevelLoad((sceneIndex), delayOnPlayerDeath));
+		}
     }
 
 
@@ -47,7 +53,6 @@ public class LevelLoader : MonoBehaviour {
     {
         SceneManager.LoadScene(levelIndexToLoad);
     }
-
 
     IEnumerator DelayedLevelLoad(int nextSceneIndex, float delay)
     {
