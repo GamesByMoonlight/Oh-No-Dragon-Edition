@@ -145,5 +145,12 @@ public class DragonType : MonoBehaviour
 
     //        }
     //    }
+
+    public void TriggerSuperPower()
+    {
+
+        Debug.Log(" SUPER POWERRRRRRRRRRRRRRRRRRRRRRR");
+    }
+
 }
 
