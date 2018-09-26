@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95827053367504010}
   - component: {fileID: 82581622300293928}
   - component: {fileID: 114958623342803236}
+  - component: {fileID: 114887282741416358}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -165,7 +166,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1391363864849568}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f28e75733bb33d3468965f110ce1d6ee, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -394,6 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poof: {fileID: 1317690604338312, guid: 1b44a8eeca0e93f4a8842e863c558d90, type: 2}
+  superPowerDuration: 7
+  switchAvailable: 1
 --- !u!114 &114681129115550744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,6 +427,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6daccb0c2620e984cb8c1605786896e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114887282741416358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138705046413802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bee01714f811224e8939affc032f9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114958623342803236

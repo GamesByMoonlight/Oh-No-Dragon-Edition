@@ -32,7 +32,7 @@ public class DragonType : MonoBehaviour
 
      void Update()
     {
-        if (switchAvailable)
+        if (switchAvailable && PlayerMovementAnimated.canMove)
         {
             
             if (Input.GetButtonDown("SwitchToAirDragon") && DragonTypeV != eDragonType.AirDragon)

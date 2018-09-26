@@ -6,19 +6,24 @@ public class ScoreKeeper : MonoBehaviour {
 
     public int SavedScore { get; set; }
 
-    // Use this for initialization
+    static ScoreKeeper instance;
 
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(this);
+    }
 
 
     void Start () {
-        //SavedScore = 0;
         DontDestroyOnLoad(this.gameObject);
 	}
 
     public void AddScore()
     {
         SavedScore += 10 ;
-
     }
 
 public void ResetScore()

@@ -10,4 +10,9 @@ public class EndZone : MonoBehaviour {
             EventManager.TriggerLevelEnd();
         }
     }
+
+    public void TurnOnFireParticles()
+    {
+        BroadcastMessage("PlayFireParticles");
+    }
 }

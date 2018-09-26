@@ -19,7 +19,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
     private Rigidbody2D playerRigidBody;
     
     //Can player move? If he is dead, he can not.
-    private bool canMove;
+    public static bool canMove;
 
     // To track movement from input
     private float movePlayerHorizontal;
@@ -29,23 +29,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
     public float frameCount = 0;
     public int count = 0;
     
-
-    //Added animator to script
+        
     Animator anim;
-
     DragonType dragonType;
 
-    
-    void GetPlayerInput()
-    {
-        movePlayerHorizontal = Input.GetAxis("Horizontal");
-        movePlayerVertical = Input.GetAxis("Vertical");
-        //Debug.Log("Horizontal :"+movePlayerHorizontal);
-        //Debug.Log("Horizontal :" + movePlayerVertical);
-
-    }
-
-    // Use this for initialization
     void Awake()
     {
         //defines animator
@@ -57,83 +44,29 @@ public class PlayerMovementAnimated : MonoBehaviour {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GetPlayerInput();
-        
-        movement = new Vector2(movePlayerHorizontal, movePlayerVertical);
 
-        // Move Character if character is alive
-        if(canMove)
+        if (canMove)
+        {
+            playerRigidBody.velocity = new Vector2(0, 0);
+            GetPlayerInput();
+            movement = new Vector2(movePlayerHorizontal, movePlayerVertical);
             playerRigidBody.velocity = movement * baseSpeed;
-        else
-            playerRigidBody.velocity = new Vector2(0,0);
+        }            
+        
+            
 
         //returns value to animator. when animBaseSpeed is greater than 0.25 animation changes from idle to walking
-        anim.SetFloat ("animBaseSpeed", Mathf.Abs(movePlayerHorizontal) + Mathf.Abs(movePlayerVertical));
-        //Debug.Log(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position));
-        ////Debug.Log(tm.GetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position)));
-        // tm.SetTile(tm.layoutGrid.WorldToCell(playerRigidBody.transform.position), tm.GetTile(new Vector3Int(-2,-3,0)));
-
-        /*
-        //Starting location of the black mass
-        Vector3Int[] locationOfDeath = new Vector3Int[60];
-        // an array of tile base objects to be placed at the starting location of the black mass
-        TileBase[] DeathTiles = new TileBase[60];
-        if (frameCount == encroachingDoomSpeed)
-        {
-            //reset timer
-            frameCount = 0;
-            for (int y = 0; y < DeathTiles.Length; y++)
-            {
-                //(-20, 23, 0) is the base location of the black mass as i increment the for loop i am decrasing the y location which is going to drop down in a straight line
-                // The count is incremented each thime this loop is run increasing the x location by 1
-                locationOfDeath[y] = new Vector3Int(-50 + count, 20 - y, 0);
-
-                // if any of the positions we are iterating through match the player location speed up the the rate of doom faster then the player can run ie kill em
-                if (locationOfDeath[y] == tm.layoutGrid.WorldToCell(playerRigidBody.transform.position))
-                {
-                    encroachingDoomSpeed = 1;
-                }
-                // because I cant generate tiles I placed a black tile out of the playable area this is grabbing that tile's TileBase to set it at the doom locaitons
-                DeathTiles[y] = tm.GetTile(new Vector3Int(-113, -10, 0));
-            }
-            //finally I set my array of new doom tiles to be black tiles and increment the count
-            tm.SetTiles(locationOfDeath, DeathTiles);
-            count += 1;
-        }
-        frameCount += 1;
-        //calls animation method
-        */
-        //SetAnimation();
+        anim.SetFloat("animBaseSpeed", playerRigidBody.velocity.magnitude);
 
     }
 
-    /*private void PlayFootSteps()
+    void GetPlayerInput()
     {
-        if(movePlayerHorizontal > 0.1f || animBaseSpeed > 0.1f)
-        {
-            audioS.enabled = true;
-            audioS.loop = true;
-        }
-        if(movePlayerHorizontal < 0.1f && movePlayerVertical < 0.1f)
-        {
-            audioS.enabled = false;
-            audioS.loop = false;
-        }
+        movePlayerHorizontal = Input.GetAxis("Horizontal");
+        movePlayerVertical = Input.GetAxis("Vertical");
     }
-    */
-
-    // Update is called once per frame
-    //     void Update () {
-    //     float xTranslation = Input.GetAxis("Horizontal") * baseSpeed;
-    //      float yTranslation = Input.GetAxis("Vertical") * baseSpeed;
-    ////       transform.Translate(xTranslation, yTranslation, 0);
-    // }
-
-
-
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -242,23 +175,6 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     }
 
-    //death sequence starts death animation, stops player from moving, and calls DestroyMe
-    public void ImDying()
-    {
-        canMove = false;
-        anim.SetTrigger("Death");
-        StartCoroutine("DestroyMe");
-    }
-
-    //After death animation this disables sprite renderer and calls TriggerLevelEnd
-    //needs to be modified to restart level instead of advancing to next
-    IEnumerator DestroyMe()
-    {
-        yield return new WaitForSeconds(1.2f);
-        dragonType.ClearSprite();
-        GameObject mySplatter = Instantiate(Splatter, transform.position, Quaternion.identity) as GameObject;
-    }
-
     private bool DragonValidator(TileBase crashingTile)
     {
         if (crashingTile == null)
@@ -273,10 +189,10 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
         switch (d)
         {
-            
-            case  DragonType.eDragonType.EarthDragon:
+
+            case DragonType.eDragonType.EarthDragon:
                 {
-                    if(crashingTile.name == "rockTile 1" | crashingTile.name == "rockTile")
+                    if (crashingTile.name == "rockTile 1" | crashingTile.name == "rockTile")
                     {
                         dragonType.PlayAnimation();
                         DragonPowerUp(d);
@@ -288,7 +204,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                 {
                     if (crashingTile.name == "singleSpikeTile" |
                         crashingTile.name == "centerSpikeTile" |
-                        crashingTile.name == "leftSpikeTile" | 
+                        crashingTile.name == "leftSpikeTile" |
                         crashingTile.name == "rightSpikeTile" |
                         crashingTile.name == "holeTile_single")
                     {
@@ -310,7 +226,7 @@ public class PlayerMovementAnimated : MonoBehaviour {
                         crashingTile.name == "elbowWater2" |
                         crashingTile.name == "elbowWater3" |
                         crashingTile.name == "elbowWater4" |
-                        crashingTile.name == "TilesetExample_13" ) 
+                        crashingTile.name == "TilesetExample_13")
                     {
                         dragonType.PlayAnimation();
                         DragonPowerUp(d);
@@ -340,6 +256,46 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
         return false;
     }
+
+    //death sequence starts death animation, stops player from moving, and calls DestroyMe
+    public void ImDying()
+    {
+        canMove = false;
+        playerRigidBody.velocity = new Vector2(0, 0);
+        anim.SetTrigger("Death");
+        StartCoroutine("DestroyMe");
+    }
+
+    void EndLevelRoutine()
+    {
+        canMove = false;
+
+        Vector2 currentPosition = transform.position;
+        Vector2 endPosition = new Vector2(currentPosition.x + 5.5f, -3.5f); // This finds a position roughly behind mama dragon
+
+        playerRigidBody.isKinematic = true;
+        playerRigidBody.velocity = endPosition - currentPosition;  // It just kind of pushes itself that direction
+
+        StartCoroutine(EndOfAutomatedMovement());
+    }
+
+    IEnumerator EndOfAutomatedMovement()
+    {
+        yield return new WaitForSeconds(1.2f);
+        playerRigidBody.velocity = new Vector2(0f, 0f);
+        transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    //After death animation this disables sprite renderer and calls TriggerLevelEnd
+    
+    IEnumerator DestroyMe()
+    {
+        yield return new WaitForSeconds(1.2f);
+        dragonType.ClearSprite();
+        Instantiate(Splatter, transform.position, Quaternion.identity);
+    }
+
+    
 
 
     void CreateParticles(Vector3 locationOfEffect)
@@ -377,19 +333,23 @@ public class PlayerMovementAnimated : MonoBehaviour {
             
             ManaAdded(dragonType);
             sk = FindObjectOfType<ScoreKeeper>();
-            sk.AddScore();
-
+            if (sk != null)
+                sk.AddScore();
+            else
+                Debug.LogWarning("Scorekeeper object missing, cannot add score.");
         }
     }
 
     void OnEnable()
     {
         EventManager.OnPlayerDeath += ImDying;
+        EventManager.OnLevelEnd += EndLevelRoutine;
     }
 
     void OnDisable()
     {
         EventManager.OnPlayerDeath -= ImDying;
+        EventManager.OnLevelEnd -= EndLevelRoutine;
     }
 
 }
