@@ -2081,16 +2081,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114008846900133256, guid: 9b6afb1399f51d8409da04cf98e62a31,
-        type: 2}
-      propertyPath: counter
-      value: 
-      objectReference: {fileID: 493319089}
-    - target: {fileID: 114008846900133256, guid: 9b6afb1399f51d8409da04cf98e62a31,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1580412073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6afb1399f51d8409da04cf98e62a31, type: 2}
   m_IsPrefabAsset: 0
@@ -2246,12 +2236,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &493319089 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114933369879944568, guid: 2d20b3d1224349c479158a0f002b38c3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1257349550}
-  m_Script: {fileID: 11500000, guid: 794c4dfa287180d4299e7f405d943fea, type: 3}
 --- !u!1001 &504917634
 Prefab:
   m_ObjectHideFlags: 0
@@ -3242,12 +3226,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1580412073 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114681129115550744, guid: 1c210c2e7a0dadc4faf9abc3aba845eb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1842478010}
-  m_Script: {fileID: 11500000, guid: 7facd68117aeb4c44ab70a328b6d61fc, type: 3}
 --- !u!1 &1589095582
 GameObject:
   m_ObjectHideFlags: 0
