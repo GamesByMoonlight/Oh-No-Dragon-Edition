@@ -367,12 +367,18 @@ public class PlayerMovementAnimated : MonoBehaviour {
 
     public delegate void AddManaEventHandler(DragonType.eDragonType dragonType);
     public event AddManaEventHandler ManaAdded;
-    
+    ScoreKeeper sk;
+
+
     void DragonPowerUp(DragonType.eDragonType dragonType)
     {
         if (ManaAdded != null)
         {
+            
             ManaAdded(dragonType);
+            sk = FindObjectOfType<ScoreKeeper>();
+            sk.AddScore();
+
         }
     }
 

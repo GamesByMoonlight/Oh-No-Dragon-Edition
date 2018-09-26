@@ -21,6 +21,7 @@ public class TitleScreenManager : MonoBehaviour {
 
 	    if (Input.GetButtonDown("Start"))
         {
+            SK.ResetScore();
             SceneManager.LoadScene(1);
         }
 	}
