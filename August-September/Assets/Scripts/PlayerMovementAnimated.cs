@@ -325,10 +325,15 @@ public class PlayerMovementAnimated : MonoBehaviour {
                     {
                         dragonType.PlayAnimation();
                         DragonPowerUp(d);
-                        
+
                         return true;
                     }
                     break;
+                }
+            case DragonType.eDragonType.SuperDragon:
+                {
+                    dragonType.PlayAnimation();
+                    return true;
                 }
 
         }

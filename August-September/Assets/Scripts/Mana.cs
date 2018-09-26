@@ -22,6 +22,7 @@ public class Mana : MonoBehaviour
     void OnEnable()
     {
         FindObjectOfType<PlayerMovementAnimated>().ManaAdded += AddMana;
+        EventManager.OnManaReset += ResetAllMana;
     }
 
     void OnDisable()
@@ -31,6 +32,7 @@ public class Mana : MonoBehaviour
         {
             player.ManaAdded -= AddMana;
         }
+        EventManager.OnManaReset -= ResetAllMana;
     }
 
     //public float ManaRedBarL; // bar length

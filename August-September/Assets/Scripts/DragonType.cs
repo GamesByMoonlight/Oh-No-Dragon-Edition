@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class DragonType : MonoBehaviour
 {
-    public enum eDragonType { AirDragon, WaterDragon, FireDragon, EarthDragon };
+    public enum eDragonType { AirDragon, WaterDragon, FireDragon, EarthDragon, SuperDragon };
     public GameObject poof;
+
+    public float superPowerDuration = 5f;
 
     private SpriteRenderer spriteRenderer;
     private Animator anim;
-    private bool switchAvailable = true;
+    public bool switchAvailable = true;
+
 
     private eDragonType _DragonType;
 
@@ -84,6 +87,10 @@ public class DragonType : MonoBehaviour
             case eDragonType.WaterDragon:
                 spriteRenderer.color = Color.blue;
                 break;
+            case
+                eDragonType.SuperDragon:
+                spriteRenderer.color = Color.white;
+                break;
         }
 
         MakePuff();
@@ -103,6 +110,7 @@ public class DragonType : MonoBehaviour
                 anim.SetTrigger("Water");
                 break;
             case eDragonType.FireDragon:
+            case eDragonType.SuperDragon:
                 anim.SetTrigger("Fire");
                 break;
         }
@@ -133,6 +141,27 @@ public class DragonType : MonoBehaviour
     {
         switchAvailable = true;
     }
+
+    public void TriggerSuperPower()
+    {
+        eDragonType dragonBeforeSuperPower = DragonTypeV;
+
+        DragonTypeV = eDragonType.SuperDragon;
+        ChangeDragonColor();
+
+        switchAvailable = false;
+        StartCoroutine(SuperPowerOver(dragonBeforeSuperPower));
+    }
+
+    IEnumerator SuperPowerOver(eDragonType dragonBeforeSuper)
+    {
+        yield return new WaitForSeconds(superPowerDuration);
+        DragonTypeV = dragonBeforeSuper;
+        ChangeDragonColor();
+        SwitchingOk();
+        EventManager.TriggerManaReset();
+    }
+
     //DragonType.eDragonType d;
 
     //d = DragonType.eDragonType.AirDragon;
@@ -146,11 +175,6 @@ public class DragonType : MonoBehaviour
     //        }
     //    }
 
-    public void TriggerSuperPower()
-    {
-
-        Debug.Log(" SUPER POWERRRRRRRRRRRRRRRRRRRRRRR");
-    }
 
 }
 

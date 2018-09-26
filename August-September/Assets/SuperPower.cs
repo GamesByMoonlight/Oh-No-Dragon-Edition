@@ -7,6 +7,8 @@ public class SuperPower : MonoBehaviour {
     private float SuperPowers;
     private DragonType eDragonType;
     private Mana mana;
+
+
     private void Start()
     {
         mana = FindObjectOfType<Mana>();
@@ -19,7 +21,7 @@ public class SuperPower : MonoBehaviour {
         SuperPowers = Input.GetAxis("SuperPower");
         if(SuperPowers>0)
         {
-            if (mana.AllDragonsFull)
+            if (mana.AllDragonsFull && eDragonType.switchAvailable)
             {
                 eDragonType.TriggerSuperPower();
             }

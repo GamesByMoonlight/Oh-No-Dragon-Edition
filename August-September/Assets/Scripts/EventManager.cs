@@ -6,9 +6,11 @@ public class EventManager : MonoBehaviour {
 
     public delegate void EndLevel();
     public delegate void PlayerDeath();
+    public delegate void ResetMana();
 
     public static event EndLevel OnLevelEnd;
     public static event PlayerDeath OnPlayerDeath;
+    public static event ResetMana OnManaReset;
 
     public static EventManager instance = null;
 
@@ -43,6 +45,14 @@ public class EventManager : MonoBehaviour {
         if (OnPlayerDeath!= null)
         {
             OnPlayerDeath();
+        }
+    }
+
+    public static void TriggerManaReset()
+    {
+        if (OnManaReset != null)
+        {
+            OnManaReset();
         }
     }
 }

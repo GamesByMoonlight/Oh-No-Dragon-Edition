@@ -34,6 +34,7 @@ public class DragonSoundManager : MonoBehaviour {
                 audioSource.Play();
                 break;
             case DragonType.eDragonType.FireDragon:
+            case DragonType.eDragonType.SuperDragon:
                 audioSource.clip = clips[2];
                 audioSource.Play();
                 break;
