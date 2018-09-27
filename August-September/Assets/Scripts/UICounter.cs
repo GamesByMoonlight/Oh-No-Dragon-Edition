@@ -16,7 +16,7 @@ public class UICounter : MonoBehaviour {
 
     IEnumerator FindScorekeeper()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForFixedUpdate();
         SK = FindObjectOfType<ScoreKeeper>();
     }
 
