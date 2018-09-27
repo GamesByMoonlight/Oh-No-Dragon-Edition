@@ -26,7 +26,7 @@ public class ScoreKeeper : MonoBehaviour {
         SavedScore += 10 ;
     }
 
-public void ResetScore()
+    public void ResetScore()
     {
         SavedScore = 0;
     }	

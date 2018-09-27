@@ -52,8 +52,6 @@ public class MobMovement : MonoBehaviour {
 
         audioSources[2].Play();
         
-        
-
 
         Transform endZoneTransform = FindObjectOfType<EndZone>().transform;
         StopPoint = new Vector3(endZoneTransform.position.x - 7.5f,  transform.position.y, transform.position.z);

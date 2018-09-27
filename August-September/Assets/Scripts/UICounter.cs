@@ -10,6 +10,13 @@ public class UICounter : MonoBehaviour {
     private int currentScore;
 
     void Start() {
+        StartCoroutine(FindScorekeeper());
+        
+    }
+
+    IEnumerator FindScorekeeper()
+    {
+        yield return new WaitForEndOfFrame();
         SK = FindObjectOfType<ScoreKeeper>();
     }
 
@@ -24,15 +31,6 @@ public class UICounter : MonoBehaviour {
        
     }
 
-    //public void Finish()
-    //{
-    //    TimerText.color = Color.yellow;
-    //    Finished = true;
-    //    if (SK != null)
-    //    {
-    //        SK.SavedScore = currentScore;
-    //    }
-        
-    //}
+    
 
 }
