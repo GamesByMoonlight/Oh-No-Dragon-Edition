@@ -58,6 +58,7 @@ public class MobMovement : MonoBehaviour {
 
         InvokeRepeating("StopMob", 0, 0.1f);
         Invoke("TurnBlack", 2.5f);
+        Invoke("MuteScreechSFX", 1f);
     }
 
     void StopMob()
@@ -68,7 +69,9 @@ public class MobMovement : MonoBehaviour {
         {
             mobSpeed = 0;
             CancelInvoke("StopMob");
+            
         }
+
             
     }
 
@@ -76,6 +79,11 @@ public class MobMovement : MonoBehaviour {
     {
         spriteRenderer.enabled = false;
         mobDeathParticles.Play();
+    }
+
+    void MuteScreechSFX()
+    {
+        audioSources[2].volume = 0f;
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
 
-    float delayOnPlayerDeath = 3f;
+    float delayOnPlayerDeath = 3.5f;
     float delayOnLevelFinish = 4.5f;
 
     void OnEnable()
